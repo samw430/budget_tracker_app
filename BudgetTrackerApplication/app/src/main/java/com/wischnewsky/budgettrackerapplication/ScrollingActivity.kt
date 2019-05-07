@@ -7,12 +7,16 @@ import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
+import android.support.v7.widget.helper.ItemTouchHelper
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.TextView
 import com.wischnewsky.budgettrackerapplication.adapter.ExpenseAdapter
 import com.wischnewsky.budgettrackerapplication.data.AppDatabase
+import com.wischnewsky.budgettrackerapplication.touch.SwipeToDeleteCallback
 import com.wischnewsky.budgettrackerapplication.data.Expense
+import com.wischnewsky.budgettrackerapplication.touch.SwipeToEditCallback
 import kotlinx.android.synthetic.main.activity_scrolling.*
 import uk.co.samuelwall.materialtaptargetprompt.MaterialTapTargetPrompt
 import java.io.Serializable
@@ -35,6 +39,39 @@ class ScrollingActivity : AppCompatActivity(), ExpenseDialog.ExpenseHandler {
         fab.setOnClickListener { _ ->
             showAddExpenseDialog()
         }
+
+        recyclerTodo.layoutManager = LinearLayoutManager(this)
+        recyclerTodo.adapter = expenseAdapter
+
+        val swipeHandler = object : SwipeToDeleteCallback(this) {
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                val adapter = recyclerTodo.adapter as ExpenseAdapter
+                if (direction == 8){ //if swiped RIGHT
+                    adapter.deleteExpense(viewHolder.adapterPosition)
+                }
+                else if (direction == 4) //if swiped LEFT
+                    showEditExpenseDialog(this, viewHolder.adapterPosition)
+                    adapter.updateExpense(this, viewHolder.adapterPosition)
+
+            }
+        }
+        val swipeHandler2 = object : SwipeToEditCallback(this) {
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                val adapter = recyclerTodo.adapter as ExpenseAdapter
+                if (direction == 8){ //if swiped RIGHT
+                    adapter.deleteExpense(viewHolder.adapterPosition)
+                }
+                else if (direction == 4) //if swiped LEFT
+                    showEditExpenseDialog(this, viewHolder.adapterPosition)
+                    adapter.updateExpense(this, viewHolder.adapterPosition)
+
+            }
+        }
+
+        val itemTouchHelper = ItemTouchHelper(swipeHandler)
+        val itemTouchHelper2 = ItemTouchHelper(swipeHandler2)
+        itemTouchHelper2.attachToRecyclerView(recyclerTodo)
+        itemTouchHelper.attachToRecyclerView(recyclerTodo)
 
         if (!wasOpenedEarlier()) {
             MaterialTapTargetPrompt.Builder(this)

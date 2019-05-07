@@ -97,4 +97,6 @@
     <string name="expense_name">Expense Name</string>
     <string name="expense_date">Expense Date</string>
     <string name="cost_of_expense">Cost of Expense</string>
+    <string name="item_category_icon">Item Category Icon</string>
+    <string name="item_name">Name</string>
 </resources>

@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="array_categories">
-        <item>Food</item>
-        <item>Drink</item>
-        <item>Cleaning Supplies</item>
+        <item>Groceries</item>
+        <item>Clothing</item>
+        <item>Lodging</item>
+        <item>Transportation</item>
+        <item>Other</item>
     </string-array>
 </resources>

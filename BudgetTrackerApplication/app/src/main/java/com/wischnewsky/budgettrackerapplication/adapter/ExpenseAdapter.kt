@@ -1,6 +1,7 @@
 package com.wischnewsky.budgettrackerapplication.adapter
 
 import android.content.Context
+import android.support.v4.content.ContextCompat
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -42,7 +43,20 @@ class ExpenseAdapter : RecyclerView.Adapter<ExpenseAdapter.ViewHolder> {
         viewHolder.tvDate.text = expense.purchaseDate
         viewHolder.tvName.text = expense.itemName
         viewHolder.tvCost.text = expense.cost.toString()
-        viewHolder.tvCategory.text = expense.category
+        viewHolder.tvCategory.text = expense.catego ry
+        when(viewHolder.tvCategory.text){
+
+
+            "Groceries" -> viewHolder.ivIcon.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_food_icon))
+            "Clothing" -> viewHolder.ivIcon.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_drink_icon))
+            "Lodging" -> viewHolder.ivIcon.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_drink_icon))
+            "Transportation" -> viewHolder.ivIcon.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_transportation_icon))
+            else -> viewHolder.ivIcon.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_other_icon))
+
+
+        }
+        viewHolder.ivIcon.setImageDrawable()
+
 
         viewHolder.btnDelete.setOnClickListener {
             deleteExpense(viewHolder.adapterPosition)
@@ -97,6 +111,7 @@ class ExpenseAdapter : RecyclerView.Adapter<ExpenseAdapter.ViewHolder> {
         var btnDelete = itemView.btnDelete
         var btnEdit = itemView.btnEdit
         var tvCategory = itemView.tvCategory
+        var ivIcon = itemView.ivIcon
     }
 
 }
