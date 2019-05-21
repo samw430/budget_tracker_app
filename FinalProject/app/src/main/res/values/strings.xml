@@ -17,6 +17,8 @@
     <string name="city_location">City Location</string>
     <string name="city_name">City Name</string>
     <string name="display_time_graph">Display Time Graph</string>
+    <string name="delete">Delete</string>
+    <string name="edit">Edit</string>
 
     <string-array name="cities_array">
         <item>Afghanistan</item>

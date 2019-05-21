@@ -2,4 +2,6 @@
     <dimen name="app_bar_height">180dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="text_margin">16dp</dimen>
+    <dimen name="expense_row_margin">12dp</dimen>
+    <dimen name="text_size_big">40sp</dimen>
 </resources>

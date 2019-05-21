@@ -49,11 +49,12 @@ class ChartActivity : AppCompatActivity() {
         val dataSet = PieDataSet(yVals, "Expense Breakdown")
         dataSet.valueTextSize = 0f
         val colors = java.util.ArrayList<Int>()
-        colors.add(Color.MAGENTA)
-        colors.add(Color.BLUE)
-        colors.add(Color.RED)
         colors.add(Color.GREEN)
+        colors.add(Color.CYAN)
         colors.add(Color.GRAY)
+        colors.add(Color.BLUE)
+        colors.add(Color.YELLOW)
+
 
         dataSet.setColors(colors)
         val data = PieData(dataSet)

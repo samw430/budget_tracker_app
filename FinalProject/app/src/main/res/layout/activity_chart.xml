@@ -5,12 +5,18 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ChartActivity">
+        tools:context=".ChartActivity"
+
+        android:background="@color/colorButton"
+>
 
     <com.github.mikephil.charting.charts.PieChart
             android:id="@+id/pieChart"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:theme="@style/AppTheme"
+
+    >
 
     </com.github.mikephil.charting.charts.PieChart>
 
